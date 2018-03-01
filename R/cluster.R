@@ -27,7 +27,7 @@ cluster <- function(df=data.frame(),address=c()) {
   
   
   if (length(res2[!(res2 %in% address)]) == 0) {
-    message("no other address found") } else {res2[!(res2 %in% address)]}
+    stop("no other address found") } else {res2[!(res2 %in% address)]}
   
 } 
 
