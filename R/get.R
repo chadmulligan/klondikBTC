@@ -28,7 +28,9 @@ get <- function(addresses = c()) {
     unique() %>%
     mutate(Hash.transac = unlist(.$Hash.transac),
            Address = unlist(.$Address), 
-           I.O = unlist(.$I.O))
+           I.O = unlist(.$I.O),
+           Block.height = unlist(.$Block.height),
+           ip.relay = unlist(.$ip.relay))
 
 }
 
