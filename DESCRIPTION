@@ -7,6 +7,9 @@ Depends: R (>= 3.4.0),
     dplyr,
     RJSONIO,
     anytime
+Imports:
+    tibble,
+    networkD3
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
