@@ -52,6 +52,7 @@ graphD3 <- function(df = data.frame(), addresses = c()) {
                           Group = "group", 
                           opacity = 1, 
                           fontSize = 16, 
+                          linkDistance = 100,
                           zoom = TRUE,
                           legend = TRUE,
                           arrows = TRUE, 
