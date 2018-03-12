@@ -7,20 +7,6 @@
 
 get <- function(addresses = c()) {
 
-#deprecated for reducing queries to blockchain.info
-# validate addresses - returns a boolean vector
-# test <- suppressWarnings(sapply(addresses, function(x) {
-#   jsonlite::fromJSON(paste0("https://blockexplorer.com/api/addr-validate/", x))
-# }))
-
-# if(sum(test)!=length(addresses)){
-#   
-#   #identify invalid addresses
-#   stop(paste(paste(c(names(test)[which(!test)]), collapse = ", "), "is not a valid bitcoin address"), 
-#        call.=FALSE)
-#   
-# } else{
-  
   addresses %>% lapply(get.address) %>% 
     unlist(recursive=FALSE) %>%
     lapply(get.address.transactions.details)  %>% 
@@ -30,8 +16,7 @@ get <- function(addresses = c()) {
            Address = unlist(.$Address), 
            I.O = unlist(.$I.O),
            Block.height = unlist(.$Block.height),
-           ip.relay = unlist(.$ip.relay))
+           ip.relay = unlist(.$ip.relay)) %>% 
+    addPrices()
 
-}
-
-#}
+  } 
