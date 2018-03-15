@@ -34,7 +34,9 @@ get.scam <- function (adds, apikey="5d3a75b8-22ccf291-025f4e8d-739bfeaf") {
       r.date <- c(unlist(sapply(scams.details, function(x) sapply(x$scams, function(y) y["reported_date"]))))
       descr <- c(unlist(sapply(scams.details, function(x) sapply(x$scams, function(y) y["scam_details"]))))
       
-      df.scams<- data.frame(address = addresses, reportdate = r.date, description = descr, row.names = NULL)
+      df.scams<- data.frame(address = addresses, reportdate = r.date, description = descr, 
+                            row.names = NULL, 
+                            stringsAsFactors = FALSE)
       colnames(df.scams) <- c("Address", "Date of Report", "Description") 
       
       df.scams

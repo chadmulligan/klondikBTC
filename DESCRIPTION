@@ -6,8 +6,7 @@ Description: What the package does (one paragraph).
 Depends: R (>= 3.4.0),
     dplyr,
     RJSONIO,
-    anytime
-Imports:
+    anytime,
     tibble,
     networkD3
 License: What license is it under?
