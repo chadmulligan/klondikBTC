@@ -11,8 +11,9 @@ addPrices <- function(df, prices = df.prices) {
   
   df %>% 
     mutate(Date = as.POSIXct(format(.$TimeUTC, "%Y-%m-%d"))) %>%
-    left_join(prices, by = c("Date")) %>%
-    mutate(USD = Close.Price * BTCValue) %>%
-    select(Hash.transac, Address, BTCValue, USD, I.O, TimeUTC, Block.height, ip.relay)
+    left_join(prices, by = c("Date")) 
+  # %>%
+  #   mutate(USD = Close.Price * BTCValue) %>%
+  #   select(Hash.transac, Address, BTCValue, USD, I.O, TimeUTC, Block.height, ip.relay)
           
 } 
