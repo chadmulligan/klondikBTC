@@ -1,11 +1,11 @@
 #' Downloading and flattening ina df all transactions info from a set of BTC addresses
 #'
-#' \code{get} is a wrapper - returns all transactions info of a vector of addresses from blockchain.info API.
+#' \code{getBTC} is a wrapper - returns all transactions info of a vector of addresses from blockchain.info API.
 #' @param addresses a vector of addresses hash
 #' @return Returns a data frame
 #' @export
 
-get <- function(addresses = c()) {
+getBTC <- function(addresses = c()) {
 
   addresses %>% lapply(get.address) %>% 
     unlist(recursive=FALSE) %>%

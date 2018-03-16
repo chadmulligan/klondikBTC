@@ -1,6 +1,6 @@
 #' Getting the forceNetworkD3 graph of transactions. 
 #'
-#' \code{graphD3} takes a dataframe returned by get() and graphes the transactions.
+#' \code{graphD3} takes a dataframe returned by getBTC() and graphes the transactions.
 #' @param df a dataframe of transactions returned by get().
 #' @param addresses a vector of addresses of interest for grouping purposes. 
 #' @return Returns a forceNetworkD3 graph. 

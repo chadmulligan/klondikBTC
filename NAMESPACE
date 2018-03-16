@@ -2,9 +2,9 @@
 
 export(addPrices)
 export(cluster)
-export(get)
 export(get.address)
 export(get.address.transactions.details)
 export(get.scam)
 export(get.transaction.details)
+export(getBTC)
 export(graphD3)
