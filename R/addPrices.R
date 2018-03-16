@@ -10,7 +10,7 @@
 addPrices <- function(df, prices = df.prices) {
   
   df %>% 
-    mutate(Date = format(.$TimeUTC[1], "%Y-%m-%d") %>%
+    mutate(Date = format(.$TimeUTC[1], "%Y-%m-%d")) %>%
     left_join(prices, by = c("Date")) 
   # %>%
   #   mutate(USD = Close.Price * BTCValue) %>%
