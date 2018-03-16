@@ -14,6 +14,7 @@ get <- function(addresses = c()) {
     unique() %>%
     mutate(Hash.transac = unlist(.$Hash.transac),
            Address = unlist(.$Address), 
+           BTCValue = unlist(.$BTCValue), 
            I.O = unlist(.$I.O),
            Block.height = unlist(.$Block.height),
            ip.relay = unlist(.$ip.relay)) %>% 
