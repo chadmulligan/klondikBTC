@@ -7,7 +7,7 @@
 addPrices(df, prices = df.prices)
 }
 \arguments{
-\item{df}{a dataframe of transactions, result of get()}
+\item{df}{a dataframe of transactions, result of getBTC()}
 
 \item{prices}{a 2-column dataframe of daily BTC closing prices}
 }

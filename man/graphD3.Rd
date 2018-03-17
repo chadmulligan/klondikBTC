@@ -15,5 +15,5 @@ graphD3(df = data.frame(), addresses = c())
 Returns a forceNetworkD3 graph.
 }
 \description{
-\code{graphD3} takes a dataframe returned by get() and graphes the transactions.
+\code{graphD3} takes a dataframe returned by getBTC() and graphes the transactions.
 }
