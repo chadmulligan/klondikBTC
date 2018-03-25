@@ -4,10 +4,12 @@
 \alias{getBTC}
 \title{Downloading and flattening ina df all transactions info from a set of BTC addresses}
 \usage{
-getBTC(addresses = c())
+getBTC(addresses = c(), apikey = character())
 }
 \arguments{
 \item{addresses}{a vector of addresses hash}
+
+\item{apikey}{Blockchain.info API key}
 }
 \value{
 Returns a data frame

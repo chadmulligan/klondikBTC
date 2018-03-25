@@ -7,7 +7,7 @@
 cluster(df = data.frame(), address = c())
 }
 \arguments{
-\item{df}{a dataframe obtained with \code{get}}
+\item{df}{a dataframe obtained with getBTC}
 
 \item{addresses}{a vector of addresses hash}
 }
