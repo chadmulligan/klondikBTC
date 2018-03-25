@@ -18,7 +18,7 @@ graphD3 <- function(df = data.frame(), addresses = c()) {
            group = c(rep("Transaction", length(unique(df$Hash.transac))),
                      rep("Address", length(unique(df$Address))))) -> nodes
 
-  nodes$group[nodes$nodes %in% addresses] <- "Searched Address(es)"
+  nodes$group[nodes$nodes %in% addresses] <- "Address Searched"
 
 
 ###preparing edges###
@@ -52,7 +52,7 @@ graphD3 <- function(df = data.frame(), addresses = c()) {
                           Group = "group",
                           opacity = 1,
                           fontSize = 16,
-                          linkDistance = 200,
+                          linkDistance = 150,
                           zoom = TRUE,
                           legend = TRUE,
                           arrows = TRUE,
