@@ -13,5 +13,5 @@ get.transaction.details(tx = list())
 Returns a data.frame
 }
 \description{
-\code{get..transaction.details} returns inputs, outputs, value, time, block height and ip relay for a single transaction
+\code{get.transaction.details} returns inputs, outputs, value, time, block height and ip relay for a single transaction
 }

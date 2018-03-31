@@ -1,7 +1,7 @@
 #' Pairs the original address with addresses from the same wallet
 #'
 #' \code{cluster} pairs the original vector of address(es) with siblings input addresses
-#' @param addresses a vector of addresses hash
+#' @param address a vector of addresses hash
 #' @param df a dataframe obtained with getBTC
 #' @return Returns a vector of addresses hash
 #' @export

@@ -4,14 +4,12 @@
 \alias{get.address}
 \title{Downloads an address object from a single BTC address including offset transactions (when txs >50)}
 \usage{
-get.address(address = c(), offset = c(), apikey)
+get.address(address = c(), apikey)
 }
 \arguments{
-\item{offset}{an integer that defines how many sets of 50 txs must be skipped backward starting from the last tx to date}
+\item{address}{a vector of a single address hash}
 
 \item{apikey}{Blockchain.info API key}
-
-\item{addresses}{a vector of a single address hash}
 }
 \value{
 Returns a list
