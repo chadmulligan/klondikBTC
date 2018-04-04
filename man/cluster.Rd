@@ -15,5 +15,5 @@ cluster(df = data.frame(), address = c())
 Returns a vector of addresses hash
 }
 \description{
-\code{cluster} pairs the original vector of address(es) with siblings input addresses
+\code{cluster} pairs the original vector of addresses with siblings input addresses
 }
