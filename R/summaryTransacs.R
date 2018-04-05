@@ -67,9 +67,9 @@ summaryTransacs <- function(df, addresses) {
 
 
 
-  ###Transactions over $1000 involving set of addresseses
+  ###Biggest transacitons involving set of addresseses
   df %>%
-    group_by(Hash.transac) %>%
+    group_by(Hash.transac, TimeUTC) %>%
     summarise(totalBTC = sum(BTCValue), totalUSD = sum(USD)) %>%
     arrange(desc(totalUSD)) %>%
     filter(totalUSD > 1000) -> summaryAddresses$biggestTransacs
