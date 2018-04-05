@@ -40,7 +40,7 @@ summaryTransacs <- function(df, addresses) {
                                                 diff(-summaryAddresses$summaryInputOutput[, 2]),
                                                 diff(-summaryAddresses$summaryInputOutput[, 3]))
 
-  colnames(summaryAddresses$summaryInputOutput) <- c("Nb of Transactions", "Total BTC", "Total USD")
+  colnames(summaryAddresses$summaryInputOutput) <- c("NbofTransactions", "TotalBTC", "TotalUSD")
   row.names(summaryAddresses$summaryInputOutput) <- c("Total Input", "Total Output", "TOTAL")
 
 
