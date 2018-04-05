@@ -14,7 +14,7 @@ cluster <- function(df=data.frame(),address=c()) {
     select(Hash.transac, Address, I.O) %>%
     group_by(Hash.transac) %>%
     add_count(I.O) %>%
-    filter(Address %in% address, I.O == "Input", n<=4) %>%
+    filter(Address %in% address, I.O == "Input", n<5) %>%
     select(Hash.transac) %>%
     distinct () -> res
 
