@@ -26,9 +26,10 @@ summaryTransacs <- function(df, addresses) {
     group_by(Address, I.O) %>%
     summarise(nbTransacs = n(),
               totalBTC = sum(BTCValue),
-              totalUSD = sum(USD))  %>%
-    arrange(desc(totalUSD), Address) -> summaryAddresses$totalTransacs
+              totalUSD = sum(USD)) -> summaryAddresses$totalTransacs
 
+
+  ###Input/Output summary
   summaryAddresses$summaryInputOutput <- as.data.frame(rbind(colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Input",
                                                                                                     3:5]),
                                                              colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Output",
