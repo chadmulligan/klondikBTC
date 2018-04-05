@@ -14,14 +14,14 @@ summaryTransacs <- function(df, addresses) {
                            lastfirstTransacs = data.frame(),
                            transacs1000 = data.frame(),
                            biggestTransacs = data.frame(),
-                           summaryInput = c(),
-                           summaryOutput = c())
+                           summaryInputOutput = data.frame()
+                           )
 
   class(summaryAddresses) <- c("summaryBTC", class(summaryAddresses))
 
 
   ###Total transactions per address
-  a %>%
+  df %>%
     filter(Address %in% addresses) %>%
     group_by(Address, I.O) %>%
     summarise(nbTransacs = n(),
@@ -29,16 +29,24 @@ summaryTransacs <- function(df, addresses) {
               totalUSD = sum(USD))  %>%
     arrange(desc(totalUSD), Address) -> summaryAddresses$totalTransacs
 
-  summaryAddresses$summaryInput <- colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Input", 3:5])
-  summaryAddresses$summaryOutput <- colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Output", 3:5])
+  summaryAddresses$summaryInputOutput <- as.data.frame(rbind(colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Input",
+                                                                                                    3:5]),
+                                                             colSums(summaryAddresses$totalTransacs[summaryAddresses$totalTransacs$I.O == "Output",
+                                                                                                    3:5])),
+                                                       stringsAsFactors = FALSE
+                                                       )
 
-  names(summaryAddresses$summaryInput) <- c("Number of Transactions", "Total BTC", "Total USD")
-  names(summaryAddresses$summaryOutput) <- c("Number of Transactions", "Total BTC", "Total USD")
+  summaryAddresses$summaryInputOutput[3, ] <- c(sum(summaryAddresses$summaryInputOutput[1]),
+                                                diff(-summaryAddresses$summaryInputOutput[, 2]),
+                                                diff(-summaryAddresses$summaryInputOutput[, 3]))
+
+  colnames(summaryAddresses$summaryInputOutput) <- c("Nb of Transactions", "Total BTC", "Total USD")
+  row.names(summaryAddresses$summaryInputOutput) <- c("Total Input", "Total Output", "TOTAL")
 
 
 
   ###first and last transactions of each address
-  a %>%
+  df %>%
     filter(Address %in% addresses) %>%
     select(Address, TimeUTC) %>%
     group_by(Address) %>%
@@ -50,7 +58,7 @@ summaryTransacs <- function(df, addresses) {
 
 
   ###Addresses transactions over $1000 from the set of addresseses
-  a %>%
+  df %>%
     filter(Address %in% addresses) %>%
     group_by(Address, Hash.transac, I.O, TimeUTC) %>%
     summarise(totalBTC = sum(BTCValue), totalUSD = sum(USD)) %>%
@@ -60,7 +68,7 @@ summaryTransacs <- function(df, addresses) {
 
 
   ###Transactions over $1000 involving set of addresseses
-  a %>%
+  df %>%
     group_by(Hash.transac) %>%
     summarise(totalBTC = sum(BTCValue), totalUSD = sum(USD)) %>%
     arrange(desc(totalUSD)) %>%
