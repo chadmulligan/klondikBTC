@@ -16,7 +16,8 @@ graphD3 <- function(df = data.frame(), addresses = c()) {
     tibble::rowid_to_column("id") %>%
     mutate(id = id - 1,
            group = c(rep("Transaction", length(unique(df$Hash.transac))),
-                     rep("Address", length(unique(df$Address))))) -> nodes
+                     rep("Address", length(unique(df$Address))))) %>%
+    as.data.frame() -> nodes
 
   nodes$group[nodes$nodes %in% addresses] <- "Address Searched"
 
@@ -39,7 +40,8 @@ graphD3 <- function(df = data.frame(), addresses = c()) {
   ##taking care of cases of multiple inputs/outputs from same address
   edges %>%
     group_by(from, to) %>%
-    summarise(sum(BTCValue)) -> edges
+    summarise(sum(BTCValue)) %>%
+    as.data.frame()-> edges
 
 
 ###Graph###
